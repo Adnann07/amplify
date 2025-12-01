@@ -5,6 +5,8 @@ import 'package:firebase_analytics/observer.dart';
 
 import 'firebase_options.dart'; // Generated via FlutterFire CLI
 import 'homepage.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 
 // Global instances for Analytics
 final FirebaseAnalytics analytics = FirebaseAnalytics.instance;
@@ -14,6 +16,7 @@ FirebaseAnalyticsObserver(analytics: analytics);
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  await dotenv.load(fileName: ".env");
   // Initialize Firebase
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

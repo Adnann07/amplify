@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class GeminiAPI {
-  // Replace with your Groq API key from https://console.groq.com
-  static const String _apiKey = "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";
+  static String get _apiKey => dotenv.env['GROQ_API_KEY'] ??
+      String.fromEnvironment('GROQ_API_KEY', defaultValue: '');
   static const String _url = "https://api.groq.com/openai/v1/chat/completions";
 
   static Future<String> generate(String prompt) async {
@@ -61,5 +62,3 @@ class GeminiAPI {
     }
   }
 }
-
-
